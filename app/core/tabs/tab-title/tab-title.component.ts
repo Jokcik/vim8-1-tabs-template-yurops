@@ -16,22 +16,3 @@ export class TabTitleComponent implements OnInit {
 
 }
 
-@Component({
-  selector: 'tab-content',
-  template: `
-    <div [hidden]="!tabComponent.active">
-        <ng-content></ng-content>
-    </div>
-  `,
-  styleUrls: ['./tab-title.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class TabContentComponent implements OnInit {
-
-  constructor(private tabComponent: TabComponent) {
-  }
-
-  ngOnInit() {
-  }
-
-}
