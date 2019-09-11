@@ -1,0 +1,36 @@
+import {
+  AfterContentInit,
+  AfterViewInit, ApplicationRef,
+  ChangeDetectionStrategy,
+  Component, ComponentRef,
+  ContentChildren,
+  OnInit,
+  QueryList, ViewChild, ViewContainerRef
+} from '@angular/core';
+import {TabComponent} from "./tab/tab.component";
+import {TabService} from "./tab.service";
+
+@Component({
+  selector: 'tabs',
+  templateUrl: './tabs.component.html',
+  styleUrls: ['./tabs.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [TabService]
+})
+export class TabsComponent implements OnInit, AfterViewInit, AfterContentInit {
+  @ContentChildren(TabComponent, { descendants: true }) tabs: QueryList<TabComponent>;
+  constructor(private tabsService: TabService,
+              private tick: ApplicationRef) {
+  }
+
+  public ngAfterViewInit(): void {
+    this.tabsService.setTabs(this.tabs.toArray());
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterContentInit(): void {
+  }
+
+}
