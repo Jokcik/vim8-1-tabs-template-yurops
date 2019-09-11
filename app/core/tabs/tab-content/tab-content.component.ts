@@ -4,7 +4,7 @@ import {TabComponent} from "../tab/tab.component";
 @Component({
   selector: 'tab-content',
   template: `
-    <div [hidden]="!tabComponent.active">
+    <div *ngIf="tabComponent.active">
         <ng-content></ng-content>
     </div>
   `,
