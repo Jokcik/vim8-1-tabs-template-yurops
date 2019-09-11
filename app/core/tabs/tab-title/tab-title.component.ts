@@ -9,7 +9,8 @@ import {TabComponent} from "../tab/tab.component";
 })
 export class TabTitleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tabComponent: TabComponent) {
+  }
 
   ngOnInit() {
   }
