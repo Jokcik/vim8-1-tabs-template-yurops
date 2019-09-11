@@ -1,4 +1,5 @@
 import {
+  AfterContentChecked,
   AfterContentInit,
   AfterViewInit, ApplicationRef,
   ChangeDetectionStrategy,
@@ -17,7 +18,7 @@ import {TabService} from "./tab.service";
   // changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TabService]
 })
-export class TabsComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class TabsComponent implements OnInit, AfterViewInit, AfterContentInit, AfterContentChecked {
   @ContentChildren(TabComponent, { descendants: true }) tabs: QueryList<TabComponent>;
   constructor(private tabsService: TabService,
               private tick: ApplicationRef) {
@@ -31,6 +32,10 @@ export class TabsComponent implements OnInit, AfterViewInit, AfterContentInit {
   }
 
   ngAfterContentInit(): void {
+  }
+
+  ngAfterContentChecked(): void {
+    this.tabsService.setTabs(this.tabs.toArray());
   }
 
 }
