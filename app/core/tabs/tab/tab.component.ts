@@ -1,5 +1,6 @@
-import {AfterViewInit, Component, HostListener, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostListener, Input, OnInit, ContentChild} from '@angular/core';
 import {TabService} from "../tab.service";
+import {TabTitleComponent} from "../tab-title/tab-title.component";
 
 @Component({
   selector: 'tab',
@@ -9,17 +10,13 @@ import {TabService} from "../tab.service";
 })
 export class TabComponent implements OnInit, AfterViewInit {
   @Input() active: boolean;
+  @ContentChild(TabTitleComponent, { static: false, read: TabTitleComponent }) tabTitle: TabTitleComponent;
 
-  constructor(private tabsService: TabService) {
-  }
-
-  @HostListener('click')
-  public setActiveTab() {
-    if (this.active) { return; }
-    this.tabsService.selectTab(this);
+  constructor() {
   }
 
   ngOnInit() {
+    
   }
 
   ngAfterViewInit(): void {

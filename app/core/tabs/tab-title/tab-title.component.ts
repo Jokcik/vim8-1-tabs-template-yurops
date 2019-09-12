@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, TemplateRef } from '@angular/core';
 import {TabComponent} from "../tab/tab.component";
 
 @Component({
@@ -8,8 +8,9 @@ import {TabComponent} from "../tab/tab.component";
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabTitleComponent implements OnInit {
+  @ViewChild(TemplateRef, { static: false }) template: TemplateRef<any>;
 
-  constructor(private tabComponent: TabComponent) {
+  constructor() {
   }
 
   ngOnInit() {
