@@ -5,7 +5,7 @@ import {TabComponent} from "../tab/tab.component";
   selector: 'tab-title',
   templateUrl: './tab-title.component.html',
   styleUrls: ['./tab-title.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabTitleComponent implements OnInit {
   @ViewChild(TemplateRef, { static: false }) template: TemplateRef<any>;

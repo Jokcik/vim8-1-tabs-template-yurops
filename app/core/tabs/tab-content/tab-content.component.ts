@@ -1,10 +1,10 @@
-import {Component, ContentChild, OnInit, TemplateRef} from '@angular/core';
+import {Component, ContentChild, OnInit, TemplateRef, ChangeDetectionStrategy} from '@angular/core';
 import {TabComponent} from "../tab/tab.component";
 
 @Component({
   selector: 'tab-content',
   template: `
-      <ng-container *ngIf="tabComponent.active">
+      <ng-container *ngIf="tabComponent.active$ | async">
           <ng-container [ngTemplateOutlet]="template"></ng-container>
       </ng-container>
   `,

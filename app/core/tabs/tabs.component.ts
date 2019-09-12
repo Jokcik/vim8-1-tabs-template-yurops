@@ -29,7 +29,6 @@ export class TabsComponent implements OnInit, AfterViewInit, AfterContentInit, A
   }
 
   public setActiveTab(tab: TabComponent) {
-    if (tab.active) { return; }
     this.tabsService.selectTab(tab);
   }
 
@@ -43,4 +42,7 @@ export class TabsComponent implements OnInit, AfterViewInit, AfterContentInit, A
     this.tabsService.setTabs(this.tabs.toArray());
   }
 
+  public trackByFunc(idx, tab) {
+    return idx;
+  }
 }
